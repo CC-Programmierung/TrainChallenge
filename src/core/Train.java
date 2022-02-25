@@ -1,6 +1,7 @@
 package core;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Train {
     private String name;
@@ -21,6 +22,19 @@ public class Train {
 
     public ArrayList<TrainStation> getStation() {
         return station;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Train train = (Train) o;
+        return Objects.equals(name, train.name) && Objects.equals(station, train.station);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, station);
     }
 
     @Override
